@@ -6,7 +6,7 @@
     <title>Document</title>
 </head>
 <body>
-    <audio autoplay loop id="backgroundMusic">
+    <audio id="backgroundMusic" loop>
         <source src="assets/background-music.mp3" type="audio/mp3">
         Tarayıcınız audio elementini desteklemiyor.
     </audio>
@@ -561,7 +561,7 @@
             <!-- Fotoğraflarınızı eklemek için aşağıdaki img etiketlerini kullanın -->
             <img src="assets/1.jpg" alt="Bizim Fotoğrafımız 1" class="photo">
             <img src="assets/2.jpg" alt="Bizim Fotoğrafımız 2" class="photo">
-            <video src="assets/v1.mp4" class="photo"  loop autoplay></video>
+            <video src="assets/v1.mp4" class="photo" muted  loop autoplay></video>
         </div>
 
         <div class="quote">
@@ -577,6 +577,15 @@
     <script>
         const music = document.getElementById('backgroundMusic');
         const musicIcon = document.getElementById('musicIcon');
+        
+        // Sayfa yüklendiğinde çalışacak fonksiyon
+        document.addEventListener('click', function() {
+            // Müzik henüz çalmıyorsa başlat
+            if (music.paused) {
+                music.play();
+                musicIcon.textContent = '🔊';
+            }
+        }, { once: true }); // once: true ile sadece ilk tıklamada çalışır
         
         function toggleMusic() {
             if (music.paused) {
