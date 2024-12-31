@@ -6,6 +6,15 @@
     <title>Document</title>
 </head>
 <body>
+    <audio autoplay loop id="backgroundMusic">
+        <source src="assets/background-music.mp3" type="audio/mp3">
+        Tarayıcınız audio elementini desteklemiyor.
+    </audio>
+
+    <button onclick="toggleMusic()" style="position: fixed; bottom: 20px; right: 20px; z-index: 9999; padding: 10px; border-radius: 50%; background: #e5c07b; border: none; cursor: pointer;">
+        <span id="musicIcon">🔊</span>
+    </button>
+
     <div class="modern-holiday-scene">
         <div class="sleigh-container">
             <svg class="sleigh-scene" viewBox="0 0 1200 400">
@@ -564,5 +573,20 @@
             Seni Çok Seviyorummmm."
         </div>
     </div>
+
+    <script>
+        const music = document.getElementById('backgroundMusic');
+        const musicIcon = document.getElementById('musicIcon');
+        
+        function toggleMusic() {
+            if (music.paused) {
+                music.play();
+                musicIcon.textContent = '🔊';
+            } else {
+                music.pause();
+                musicIcon.textContent = '🔈';
+            }
+        }
+    </script>
 </body>
 </html>
